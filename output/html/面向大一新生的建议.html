@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="写给计算机方向大一新生的建议：专业选择、学术诚信、学习方法与真正的训练。">
+  <title>面向大一新生的建议</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #000000;
+      --muted: #555555;
+      --blue: #00008b;
+      --line: #808080;
+      --hairline: #dddddd;
+      --soft: #e8eee7;
+      --code: #f1f5f0;
+      --sans: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", sans-serif;
+      --mono: "IBM Plex Mono", Consolas, monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow: hidden;
+      background: #ffffff;
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #0000e6;
+      text-decoration: underline;
+    }
+
+    ::selection {
+      color: #ffffff;
+      background: var(--blue);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    .deck {
+      display: grid;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      place-items: center;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .stage {
+      position: relative;
+      flex: 0 0 auto;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      background: #ffffff;
+      transform: scale(var(--deck-scale, 1));
+      transform-origin: center center;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 1280px;
+      height: 720px;
+      padding: 34px 72px 42px;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      background: #ffffff;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.4;
+      transition: opacity 140ms linear, visibility 0s linear 140ms;
+    }
+
+    .slide.is-active {
+      z-index: 2;
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+      transition: opacity 140ms linear, visibility 0s;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    blockquote,
+    ul {
+      margin-top: 0;
+    }
+
+    h1,
+    h2 {
+      font-weight: 400;
+    }
+
+    h2 {
+      margin: 0;
+      padding: 0 0 18px;
+      border-bottom: 1.5px solid var(--line);
+      font-size: 38px;
+      line-height: 1.18;
+    }
+
+    .slide-body {
+      margin-top: 26px;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 48px;
+      list-style-type: disc;
+      list-style-position: outside;
+    }
+
+    li {
+      margin-top: 5px;
+      padding-left: 2px;
+      font-size: 24px;
+      line-height: 1.4;
+    }
+
+    li:first-child {
+      margin-top: 0;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    code {
+      padding: 0 2px;
+      background: rgba(0, 50, 0, 0.08);
+      font-family: var(--mono);
+      font-size: 0.84em;
+    }
+
+    .note {
+      margin-top: 22px;
+      font-size: 21px;
+      line-height: 1.4;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .centered {
+      display: grid;
+      padding: 40px;
+      place-items: center;
+      text-align: center;
+    }
+
+    .cover-content {
+      width: 1040px;
+    }
+
+    .cover-kicker {
+      margin-bottom: 34px;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .cover-content h1,
+    .closing-content h1 {
+      margin: 0;
+      font-size: 54px;
+      line-height: 1.2;
+    }
+
+    .cover-subtitle {
+      margin-top: 43px;
+      color: var(--muted);
+      font-size: 24px;
+    }
+
+    .cover-protocol {
+      margin-top: 82px;
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 15.5px;
+      letter-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 52px;
+      line-height: 1.2;
+    }
+
+    .closing-content {
+      width: 1040px;
+    }
+
+    .llm-subhead {
+      margin-bottom: 12px;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .llm-list li {
+      margin-top: 8px;
+    }
+
+    .agent-intro {
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .agent-list {
+      margin-top: 16px;
+    }
+
+    .agent-list li {
+      margin-top: 3px;
+      font-size: 20.5px;
+      line-height: 1.35;
+    }
+
+    .agent-other-title {
+      margin-top: 34px;
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    .agent-other-list {
+      margin-top: 8px;
+    }
+
+    .agent-other-list li {
+      font-size: 19.5px;
+      line-height: 1.35;
+    }
+
+    .agent-note {
+      margin-top: 54px;
+      font-size: 20px;
+    }
+
+    .integrity-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 30px;
+      margin-top: 18px;
+    }
+
+    .integrity-grid h3 {
+      margin: 0 0 8px;
+      font-size: 23px;
+    }
+
+    .integrity-grid ul {
+      padding-left: 30px;
+    }
+
+    .integrity-grid li {
+      margin-top: 3px;
+      font-size: 17.2px;
+      line-height: 1.37;
+    }
+
+    .integrity-boundary {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.35;
+      text-align: right;
+    }
+
+    .integrity-bottom {
+      margin-top: 16px;
+      padding-top: 11px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .integrity-bottom h3 {
+      margin-bottom: 7px;
+      font-size: 23px;
+    }
+
+    .integrity-bottom .lead {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 17.5px;
+    }
+
+    .integrity-bottom ul {
+      padding-left: 30px;
+    }
+
+    .integrity-bottom li {
+      margin-top: 1px;
+      font-size: 17.5px;
+      line-height: 1.3;
+    }
+
+    .quote-block {
+      margin-top: 12px;
+      padding: 12px 20px;
+      background: var(--soft);
+      font-size: 23.5px;
+      line-height: 1.5;
+    }
+
+    .quote-subhead {
+      margin-top: 19px;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .quote-source {
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 19px;
+      text-align: right;
+    }
+
+    .quote-note {
+      margin-top: 26px;
+      font-size: 20px;
+    }
+
+    .practice-list li {
+      margin-top: 11px;
+      font-size: 25px;
+    }
+
+    .rtfm-body {
+      margin-top: 10px;
+    }
+
+    .rtfm-intro {
+      font-size: 17.5px;
+    }
+
+    .rtfm-section-title {
+      margin: 8px 0 0;
+      font-size: 21.5px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .rtfm-section-title s {
+      color: #777777;
+      text-decoration-thickness: 1.5px;
+    }
+
+    .rtfm-lead {
+      margin-top: 5px;
+      font-size: 17px;
+      line-height: 1.35;
+    }
+
+    .rtfm-list {
+      margin-top: 4px;
+      padding-left: 38px;
+    }
+
+    .rtfm-list li {
+      margin-top: 2px;
+      font-size: 16.2px;
+      line-height: 1.3;
+    }
+
+    .rtfm-code {
+      margin-top: 8px;
+      padding: 9px 14px;
+      background: var(--code);
+      font-family: var(--mono);
+      font-size: 14.2px;
+      line-height: 1.45;
+      white-space: pre-wrap;
+    }
+
+    .rtfm-divider {
+      margin-top: 10px;
+      border-top: 1px solid var(--hairline);
+    }
+
+    .search-table {
+      width: 100%;
+      margin-top: 5px;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 14.5px;
+      line-height: 1.3;
+    }
+
+    .search-table th,
+    .search-table td {
+      border: 0;
+      padding: 6px 4px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .search-table thead {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .search-table tbody tr:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .search-table th:first-child,
+    .search-table td:first-child {
+      width: 16%;
+      font-weight: 700;
+    }
+
+    .search-table .not-recommended a {
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .rtfm-notes {
+      margin-top: 9px;
+      padding-left: 30px;
+    }
+
+    .rtfm-notes li {
+      margin-top: 2px;
+      font-size: 14.2px;
+      line-height: 1.28;
+    }
+
+    .rtfm-examples {
+      margin-top: 18px;
+      font-size: 13.2px;
+      line-height: 1.5;
+    }
+
+    .rtfm-examples p + p {
+      margin-top: 2px;
+    }
+
+    .memory-list li {
+      margin-top: 8px;
+      font-size: 23px;
+      line-height: 1.4;
+    }
+
+    .math-list li {
+      margin-top: 9px;
+      font-size: 23px;
+    }
+
+    .health-list li,
+    .responsibility-list li {
+      margin-top: 9px;
+      font-size: 23px;
+    }
+
+    .patience-list li {
+      margin-top: 6px;
+      font-size: 22.5px;
+      line-height: 1.4;
+    }
+
+    .patience-quote {
+      margin-top: 35px;
+      padding: 14px 20px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 20px;
+      text-align: right;
+    }
+
+    .patience-source {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 17px;
+      text-align: right;
+    }
+
+    .course-line {
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .resource-line {
+      font-size: 19px;
+    }
+
+    .course-list {
+      margin-top: 18px;
+    }
+
+    .course-list li {
+      margin-top: 9px;
+      font-size: 23px;
+    }
+
+    .course-link {
+      margin-top: 22px;
+      font-size: 18px;
+    }
+
+    .final-list li {
+      margin-top: 9px;
+      font-size: 24px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        overflow: auto;
+      }
+
+      .deck {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+      }
+
+      .stage {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        transform: none !important;
+      }
+
+      .slide {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: auto;
+        min-height: 100dvh;
+        padding: 28px 22px 42px;
+        overflow: visible;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+
+      .centered {
+        min-height: 100dvh;
+      }
+
+      .cover-content,
+      .closing-content {
+        width: 100%;
+        min-width: 0;
+      }
+
+      h2 {
+        font-size: 31px;
+      }
+
+      .cover-content h1,
+      .closing-content h1 {
+        font-size: 38px;
+      }
+
+      .section-title {
+        font-size: 38px;
+      }
+
+      li,
+      .practice-list li,
+      .final-list li {
+        font-size: 20px;
+      }
+
+      .integrity-grid {
+        display: block;
+      }
+
+      .integrity-grid > div + div {
+        margin-top: 24px;
+      }
+
+      .integrity-grid li,
+      .integrity-bottom li {
+        font-size: 18px;
+      }
+
+      .rtfm-list li {
+        font-size: 17px;
+      }
+
+      .search-table {
+        font-size: 13px;
+      }
+
+      .search-table th,
+      .search-table td {
+        padding: 7px 3px;
+      }
+    }
+
+    @media print {
+      @page {
+        size: 13.333333in 7.5in;
+        margin: 0;
+      }
+
+      html,
+      body {
+        width: auto;
+        height: auto;
+        overflow: visible;
+        background: #ffffff;
+      }
+
+      .deck {
+        display: block;
+        width: auto;
+        height: auto;
+        overflow: visible;
+      }
+
+      .stage {
+        width: 1280px;
+        height: auto;
+        overflow: visible;
+        transform: none !important;
+      }
+
+      .slide {
+        position: relative;
+        inset: auto;
+        display: block;
+        width: 1280px;
+        height: 720px;
+        break-after: page;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+
+      .slide:last-child {
+        break-after: auto;
+      }
+
+      .slide.centered {
+        display: grid;
+      }
+
+      a {
+        color: var(--blue);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" aria-label="面向大一新生的建议">
+    <div class="stage" id="stage">
+      <section class="slide centered is-active" data-title="面向大一新生的建议" aria-label="第 1 页，共 23 页">
+        <div class="cover-content">
+          <h1>面向大一新生的建议</h1>
+          <p class="cover-protocol">章鹏<br>2026.11.04</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="了解专业" aria-label="第 2 页，共 23 页">
+        <h2>了解专业</h2>
+        <div class="slide-body">
+          <ul>
+            <li>我校信计专业以培养 CSer 为目标，不存在专业分流。</li>
+            <li>这里的 CS 指 Computer Science（计算机科学）。</li>
+            <li>如果确定自己对计算机缺乏兴趣，应尽早了解转专业政策并做规划。</li>
+            <li>兴趣和天赋因人而异；是否留下、转向，要结合自身实际审慎决定。</li>
+            <li>培养方案、转专业政策与毕业要求，一律以学校正式文件为准。</li>
+          </ul>
+          <p class="note">不要只因为“热门”留下，也不要因为一时的畏难离开。</p>
+        </div>
+      </section>
+
+      <section class="slide centered" data-title="学习建议" aria-label="第 3 页，共 23 页">
+        <h1 class="section-title">学习建议</h1>
+      </section>
+
+      <section class="slide" data-title="尽量不要逃课" aria-label="第 4 页，共 23 页">
+        <h2>尽量不要逃课</h2>
+        <div class="slide-body">
+          <ul>
+            <li>到课首先保证了出勤，也方便跟上课程节奏、及时记录重点。</li>
+            <li>老师可能明确说明考点、边界和常见错误，错过现场就很难补回。</li>
+            <li>如果暂时听不进去，也尽量到场，知道这节课讲了什么内容。</li>
+            <li>在课堂玩手机和在寝室玩手机，不是一回事。</li>
+          </ul>
+          <p class="note">逃课省下的是几十分钟，错过的可能是整门课的入口。</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="拥抱大语言模型：不止于对话" aria-label="第 5 页，共 23 页">
+        <h2>拥抱大语言模型：不止于对话</h2>
+        <div class="slide-body">
+          <p class="llm-subhead">大语言模型可以做什么？</p>
+          <ul class="llm-list">
+            <li>课程学习：帮助快速了解一个知识点或领域</li>
+            <li>考试复习：把老师发的资料交给 agent，提高复习效率</li>
+            <li>编程实验：解释报错、读代码、写小脚本、生成测试用例</li>
+          </ul>
+          <p class="note">先自己思考，再让 AI 校准；你可以使用答案，但必须能解释答案。</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="Coding Agent" aria-label="第 6 页，共 23 页">
+        <h2>Coding Agent</h2>
+        <div class="slide-body">
+          <p class="agent-intro">以下只是个人体验，不是客观排名。</p>
+          <ul class="agent-list">
+            <li>Claude Code：成熟，综合能力强。</li>
+            <li>Codex：稳定、全面；个人较推荐。</li>
+            <li>Pi：轻量、快速，适合偏好小而美工具的人。</li>
+            <li>Droid：均衡中庸；个人比较喜欢。</li>
+            <li>Grok Build：设计精致，能力较强。</li>
+            <li>DeepSeek Harness：适合愿意自行配置和折腾的人。</li>
+            <li>ZCode：曾出现擅自上传用户代码的争议，现已开源；使用前仍需核实规则。</li>
+          </ul>
+          <p class="agent-other-title">其他工具</p>
+          <ul class="agent-other-list">
+            <li>OpenCode、Cursor、Trae、Qoder、WorkBuddy 等等（此处省略 100 个）都可尝试，最终选择什么凭自己的使用体验决定。</li>
+          </ul>
+          <p class="agent-note">Agent 能加速工作，不能替你建立判断力；关键改动要逐行审阅。</p>
+        </div>
+      </section>
+
+      <section class="slide integrity-slide" data-title="Academic Integrity" aria-label="第 7 页，共 23 页">
+        <h2>Academic Integrity：什么事能做，什么不能</h2>
+        <div class="integrity-grid">
+          <div>
+            <h3>可以做：使用资料与求助</h3>
+            <ul>
+              <li>阅读课程大纲、教材、官方文档、标准与公开技术资料。</li>
+              <li>在课程允许的范围内，与同学讨论概念、比较思路。</li>
+              <li>在课程允许的前提下，用 AI 解释术语、提供调试线索、生成测试思路，并核实结果。</li>
+              <li>引用他人的代码、观点、数据或图片，并清楚标明来源。</li>
+              <li>向老师、助教求助，说明你读过、搜过、试过什么。</li>
+              <li>保留笔记、版本记录、日志和失败尝试，证明工作过程。</li>
+            </ul>
+          </div>
+          <div>
+            <h3>不能做：把别人的工作当成自己的</h3>
+            <ul>
+              <li>复制同学、网络、往届或 AI 的代码和报告后，改名就提交。</li>
+              <li>在独立作业、测验或考试中，未经允许协作或使用 AI。</li>
+              <li>伪造运行结果、实验数据、引用、调试过程或工作量。</li>
+              <li>把题解、往年答案或开源项目包装成自己的原创。</li>
+              <li>课程要求披露时，故意隐瞒 AI 或其他协助。</li>
+              <li>帮助别人实施上述行为，同样可能违反学术诚信。</li>
+            </ul>
+            <p class="integrity-boundary">具体边界以课程大纲、教师说明、学校规定和 <a href="https://integrity.mit.edu/">MIT Academic Integrity</a> 等公开规范为准。</p>
+          </div>
+        </div>
+        <div class="integrity-bottom">
+          <h3>底线不是“别被抓到”</h3>
+          <p class="lead">你或许可以一时“不劳而获”，并“侥幸”没有被抓到。</p>
+          <ul>
+            <li>但你要认识到，这件事本身是不对的。</li>
+            <li>它更不是你炫耀的资本，而是我们最后的底线。</li>
+            <li>一次侥幸换不来能力，却会让成绩失去真实含义。</li>
+            <li>不确定时先问规则；来不及完成，也比伪造完成更好。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide" data-title="大学真正宝贵的是 training" aria-label="第 8 页，共 23 页">
+        <h2>大学真正宝贵的是 training</h2>
+        <div class="slide-body">
+          <blockquote class="quote-block">教育除了知识的记忆之外，更本质的是能力的训练，即所谓的 training。而但凡 training 就必须克服一定的难度，否则你就是在做重复劳动，能力也不会有改变。</blockquote>
+          <h3 class="quote-subhead">别让别人替你跨过难度</h3>
+          <blockquote class="quote-block">如果遇到难度就选择退缩，或者让别人来替你克服本该由你自己克服的难度，等于是自动放弃了获得 training 的机会，而这其实是大学专业教育最宝贵的部分。</blockquote>
+          <p class="quote-source">— etone</p>
+          <p class="quote-note">求助是学习的一部分，替做不是。</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="实践大于学习" aria-label="第 9 页，共 23 页">
+        <h2>实践大于学习</h2>
+        <div class="slide-body">
+          <ul class="practice-list">
+            <li>实践的重要性往往大于单纯听课和看书</li>
+            <li>计算机专业不是不要学习，而是实践驱动学习。</li>
+            <li>学习提供输入，实践完成输出；没有输出，知识就很难真正变成能力。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide rtfm-slide" data-title="RTFM &amp; STFW" aria-label="第 10 页，共 23 页">
+        <h2>RTFM &amp; STFW</h2>
+        <div class="rtfm-body">
+          <p class="rtfm-intro">虽然大语言模型可以很好地做到这一点，但 RTFM &amp; STFW 也是 training 的一部分。</p>
+          <h3 class="rtfm-section-title">READ THE <s>FXXKING</s> Friendly MANUAL</h3>
+          <p class="rtfm-lead">“不会”不是立刻问人的理由。先阅读官方资料十分钟。</p>
+          <ul class="rtfm-list">
+            <li>逐字读错误原文，不要只瞥一眼最后一行。</li>
+            <li>查官方手册、<code>--help</code>、版本说明和最小示例。</li>
+            <li>仍然不懂，再问人，并附上已读内容和最小复现。</li>
+          </ul>
+          <pre class="rtfm-code">$ man git-rebase
+$ git help rebase</pre>
+          <div class="rtfm-divider"></div>
+          <h3 class="rtfm-section-title">SEARCH THE <s>FXXKING</s> Friendly WEBSITE</h3>
+          <p class="rtfm-lead">为了查找英文资料，你应该使用下表中推荐的网站：</p>
+          <table class="search-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>搜索引擎</th>
+                <th>百科</th>
+                <th>问答网站</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>推荐使用</td>
+                <td><a href="https://dir.scmor.com/">Google 搜索镜像</a></td>
+                <td><a href="https://en.wikipedia.org/">Wikipedia</a></td>
+                <td><a href="https://stackoverflow.com/">Stack Overflow</a></td>
+              </tr>
+              <tr class="not-recommended">
+                <td>不推荐使用</td>
+                <td><a href="https://www.baidu.com/">Baidu</a></td>
+                <td><a href="https://baike.baidu.com/">百度百科</a></td>
+                <td><a href="https://zhidao.baidu.com/">百度知道</a> / <a href="https://bbs.csdn.net/">CSDN</a></td>
+              </tr>
+            </tbody>
+          </table>
+          <ul class="rtfm-notes">
+            <li>英文关键词优先；先查官网、官方文档、Release Notes 和项目 Issue，再参考社区答案，并核对版本与日期。</li>
+            <li>对比词条“前束范式”：百度百科、中文维基百科、英文维基百科。</li>
+          </ul>
+          <div class="rtfm-examples">
+            <p>示例：<a href="https://stackoverflow.com/questions/9229601/what-is-in-c-code/9229793">What is ":-!!" in C code?</a> · <a href="https://stackoverflow.com/questions/172303/is-there-a-regular-expression-to-detect-a-valid-regular-expression">用正则匹配正则</a> · <a href="https://stackoverflow.com/questions/1642028/what-is-the-operator-in-c">C++ 中的 “--&gt;” 运算符</a></p>
+            <p>前束范式：<a href="https://baike.baidu.com/view/143343.htm">百度百科</a> · <a href="https://zh.wikipedia.org/wiki/%E5%89%8D%E6%9D%9F%E8%8C%83%E5%BC%8F">中文维基百科</a> · <a href="https://en.wikipedia.org/wiki/Prenex_normal_form">英文维基百科</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="继续保持记忆的习惯" aria-label="第 11 页，共 23 页">
+        <h2>继续保持记忆的习惯</h2>
+        <div class="slide-body">
+          <ul class="memory-list">
+            <li>大学也要学习，学习就会有记忆与遗忘，记忆是很有必要的。</li>
+            <li>如果要学习好一门课程，请每周花 20 小时在这门课上；念好书不是一件顺便的事情，不要抱着无所谓的态度。</li>
+            <li>工具可以试 AnkiDroid 或墨墨记忆卡（个人建议），如何记忆每个人都有自己的方法。</li>
+          </ul>
+          <p class="note">虽然学习不只是记忆，但是我觉得记忆是最关键的。</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="有一个好的数学基础" aria-label="第 12 页，共 23 页">
+        <h2>有一个好的数学基础</h2>
+        <div class="slide-body">
+          <ul class="math-list">
+            <li>信计专业没几门数学方向的专业课。</li>
+            <li>数学分析（微积分）、高等代数（线性代数）比较重要，建议花比较多的时间。</li>
+            <li>概率论与数理统计的重要性可能弱一些，但也需要好好学。</li>
+            <li>解析几何不必投入过多时间，确保自己能够考一个不错的分数即可。</li>
+            <li>在一门课程上取得不错的分数，不意味着要花很多时间，有一个好的期末复习就够了。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide centered" data-title="其他建议" aria-label="第 13 页，共 23 页">
+        <h1 class="section-title">其他建议</h1>
+      </section>
+
+      <section class="slide" data-title="保持一个健康良好的身体" aria-label="第 14 页，共 23 页">
+        <h2>保持一个健康良好的身体</h2>
+        <div class="slide-body">
+          <ul class="health-list">
+            <li>不仅是可以为祖国健康工作五十年，对于个人还可以提升学习工作效率。</li>
+            <li>不反对也不鼓励熬夜，但请不要影响他人，以及熬夜之后注意调整好作息。</li>
+            <li>校园跑最好自己独立完成，保持合理的锻炼频率。</li>
+            <li>锻炼之前确保身体状态过关，一位老师的悲剧提醒我们：运动的目的是为健康服务，而不是用“坚持”去挑战身体的底线。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide" data-title="对自己负责" aria-label="第 15 页，共 23 页">
+        <h2>对自己负责</h2>
+        <div class="slide-body">
+          <ul class="responsibility-list">
+            <li>大学已经是独立生活的开始，要学会对自己负责，主动适应、主动沟通、主动承担。</li>
+            <li>做出选择之前要有充分的考虑，提前想过后果。</li>
+            <li>做出选择之后不要后悔，如果失败自己要勇于承担，不要灰心，保持平常心。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide" data-title="保持耐心与自律" aria-label="第 16 页，共 23 页">
+        <h2>保持耐心与自律</h2>
+        <div class="slide-body">
+          <ul class="patience-list">
+            <li>在正确道路上坚持长期主义。</li>
+            <li>一件事情的成功不是顺顺便便的，在看不到结果时，请愿意持续做正确的小事。</li>
+            <li>大学相对比较自由，监督少，自律可以帮助我们管理好自己；人都是有惰性的，克服惰性才能不断进步。</li>
+            <li>AI 时代学习变得更加容易，但是靡不有初，鲜克有终。真正稀缺的不是各种各样的知识，而是能够持续行动。</li>
+          </ul>
+          <p class="patience-quote">想要和得到，中间还有两个字，那就是要做到，只有做到，你才能得到嘛。</p>
+          <p class="patience-source">—《士兵突击》</p>
+        </div>
+      </section>
+
+      <section class="slide centered" data-title="学习资料推荐" aria-label="第 17 页，共 23 页">
+        <h1 class="section-title">学习资料推荐</h1>
+      </section>
+
+      <section class="slide" data-title="南京大学 CPL（C Programming Language）" aria-label="第 18 页，共 23 页">
+        <h2>南京大学 CPL（C Programming Language）</h2>
+        <div class="slide-body">
+          <p class="course-line">南京大学 CPL 课程团队 · 南京大学 CPL（C 语言程序设计基础）</p>
+          <ul class="course-list">
+            <li>以 C 为入口，理解数据表示、控制流、函数、递归、指针与抽象。</li>
+            <li>不要只看课：跟讲义、做练习、过 OJ，再改写成自己的小项目。</li>
+            <li>遇到错误，构造最小例子；写清输入、预期结果和实际结果。</li>
+            <li>目标是建立“程序如何运行”的直觉，而不是背语法。</li>
+          </ul>
+          <p class="course-link"><a href="https://docs.cpl.icu/">CPL 2026 课程主页</a>（课程站按学期更新，授课信息以当前页面为准）</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="南京大学 SICP（Structure and Interpretation of Computer Programs）" aria-label="第 19 页，共 23 页">
+        <h2>南京大学 SICP（Structure and Interpretation of Computer Programs）</h2>
+        <div class="slide-body">
+          <p class="course-line"><a href="https://sicp.pascal-lab.net/2026/">SICP 2026 课程主页</a> · 南京大学 SICP《计算机程序的构造和解释》</p>
+          <ul class="course-list">
+            <li>从函数、递归、高阶函数走向解释器，核心是控制程序的复杂度。</li>
+            <li>通过 Python、Scheme 与 SQL 等内容理解不同计算范式。</li>
+            <li>完成作业、Lab 和 Project；不要只看视频、抄代码。</li>
+            <li>学完后应能拆解问题、设计抽象，并解释程序为什么正确。</li>
+          </ul>
+          <p class="note">先修要求不高，但它要求你持续动手，而不是被动听课。</p>
+        </div>
+      </section>
+
+      <section class="slide" data-title="CS 自学指南 &amp; Missing Semester" aria-label="第 20 页，共 23 页">
+        <h2>CS 自学指南 &amp; Missing Semester</h2>
+        <div class="slide-body">
+          <p class="resource-line"><a href="https://csdiy.wiki/">CSDIY</a>　<a href="https://missing.csail.mit.edu/">The Missing Semester</a></p>
+          <ul class="course-list">
+            <li>CSDIY 是自学路线索引；上面是推荐课程列表，以及作者的评价，可以选择来看。</li>
+            <li>Missing Semester 补齐 Shell、Git、编辑器、调试、自动化等必要内容。</li>
+          </ul>
+          <p class="note">还有很多优秀的课程资料和网站，同学可以平时多逛逛B站以及论坛，计算机最忌讳的就是闭门造车，有一个开放包容的心态更有助于进行学习。</p>
+        </div>
+      </section>
+
+      <section class="slide centered" data-title="最后" aria-label="第 21 页，共 23 页">
+        <h1 class="section-title">最后</h1>
+      </section>
+
+      <section class="slide" data-title="大学不只是成绩" aria-label="第 22 页，共 23 页">
+        <h2>大学不只是成绩</h2>
+        <div class="slide-body">
+          <ul class="final-list">
+            <li>成绩重要，但不是衡量一个人的唯一标准。</li>
+            <li>学会合作、表达、提问、求助和独立判断，同样重要。</li>
+            <li>认识不同的人，参加可信赖的集体，保留好奇心。</li>
+            <li>逐步完善自己的世界观和价值观，并为选择承担责任。</li>
+            <li>照顾好身体，也珍惜愿意和你一起解决问题的人。</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="slide centered" data-title="希望大家可以在安理度过愉快的四年" aria-label="第 23 页，共 23 页">
+        <div class="closing-content">
+          <h1>希望大家可以在安理<br>度过愉快的四年</h1>
+        </div>
+      </section>
+    </div>
+  </main>
+  <p class="sr-only" id="slideStatus" aria-live="polite">1 / 23</p>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const stage = document.querySelector("#stage");
+      const status = document.querySelector("#slideStatus");
+      const mobile = window.matchMedia("(max-width: 800px)");
+      let current = readIndex();
+      let touchStartX = 0;
+      let touchStartY = 0;
+
+      function readIndex() {
+        const match = window.location.hash.match(/^#slide-(\d+)$/);
+        if (!match) return 0;
+        const index = Number(match[1]) - 1;
+        return index >= 0 && index < total ? index : 0;
+      }
+
+      function fitStage() {
+        if (mobile.matches) {
+          stage.style.removeProperty("--deck-scale");
+          return;
+        }
+        const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+        stage.style.setProperty("--deck-scale", String(scale));
+      }
+
+      function setSlide(index, updateHash = true) {
+        current = Math.max(0, Math.min(total - 1, index));
+        slides.forEach((slide, slideIndex) => {
+          const active = slideIndex === current;
+          slide.classList.toggle("is-active", active);
+          slide.setAttribute("aria-hidden", String(!active && !mobile.matches));
+          slide.inert = !active && !mobile.matches;
+        });
+        status.textContent = `${current + 1} / ${total}`;
+        if (updateHash) {
+          const hash = `#slide-${current + 1}`;
+          if (window.location.hash !== hash) {
+            window.history.replaceState(null, "", hash);
+          }
+        }
+      }
+
+      function handleKeydown(event) {
+        if (mobile.matches) return;
+        const interactive = event.target.closest?.("a, button, input, textarea, select, [contenteditable='true']");
+        if (interactive && (event.key === " " || event.key === "Enter")) return;
+
+        if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(event.key)) {
+          event.preventDefault();
+          setSlide(current + 1);
+        } else if (["ArrowLeft", "ArrowUp", "PageUp"].includes(event.key)) {
+          event.preventDefault();
+          setSlide(current - 1);
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          setSlide(0);
+        } else if (event.key === "End") {
+          event.preventDefault();
+          setSlide(total - 1);
+        }
+      }
+
+      document.addEventListener("keydown", handleKeydown);
+      window.addEventListener("resize", fitStage);
+      window.addEventListener("hashchange", () => setSlide(readIndex(), false));
+      mobile.addEventListener?.("change", () => {
+        fitStage();
+        setSlide(current, false);
+      });
+
+      stage.addEventListener("click", (event) => {
+        if (mobile.matches || event.target.closest("a")) return;
+        setSlide(current + (event.shiftKey ? -1 : 1));
+      });
+
+      stage.addEventListener("touchstart", (event) => {
+        if (event.touches.length !== 1) return;
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+      }, { passive: true });
+
+      stage.addEventListener("touchend", (event) => {
+        if (mobile.matches || !event.changedTouches.length) return;
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - touchStartX;
+        const deltaY = touch.clientY - touchStartY;
+        if (Math.abs(deltaX) > 55 && Math.abs(deltaX) > Math.abs(deltaY) * 1.35) {
+          setSlide(current + (deltaX < 0 ? 1 : -1));
+        }
+      }, { passive: true });
+
+      fitStage();
+      setSlide(current, false);
+    })();
+  </script>
+</body>
+</html>
