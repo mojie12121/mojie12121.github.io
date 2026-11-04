@@ -757,6 +757,23 @@ pre code {
   text-align: center;
 }
 
+.site-visits {
+  position: fixed;
+  left: 10px;
+  bottom: 9px;
+  z-index: 11;
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  color: #7a7a7a;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+  user-select: none;
+}
+
 .noscript-note {
   position: fixed;
   right: 12px;
@@ -863,6 +880,10 @@ pre code {
     top: 8px;
     width: calc(100vw - 16px);
     height: calc(100dvh - 16px);
+  }
+
+  .site-visits {
+    display: none;
   }
 
   .slide {
@@ -1155,6 +1176,7 @@ pre code {
   .progress-track,
   .slide-controls,
   .slide-number,
+  .site-visits,
   .skip-link,
   .noscript-note {
     display: none !important;
